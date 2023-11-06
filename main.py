@@ -1,13 +1,16 @@
 import json
+import os
 from datetime import datetime
 from googletrans import Translator
 from aiogram import Bot, Dispatcher, executor, types
-from config import TOKEN, API
+from dotenv import load_dotenv, find_dotenv
 import requests
-from aiogram.dispatcher.filters import Text
-bot = Bot(token=TOKEN)
-dp = Dispatcher(bot=bot)
 
+load_dotenv(find_dotenv())
+
+bot = Bot(token=os.getenv('TOKEN'))
+dp = Dispatcher(bot=bot)
+API = os.getenv('API')
 mrk = types.ReplyKeyboardMarkup(resize_keyboard=True)
 mrk.add('Ob havo malumotlari')
 
